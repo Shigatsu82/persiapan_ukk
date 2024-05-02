@@ -27,6 +27,10 @@
                 <td>{{ $product->spesifikasi }}</td>
                 <td>{{ $product->seri }}</td>
                 <td>{{ $product->stok }}</td>
+                <td>
+                    <a href="{{route('products.show', $product->id)}}">Show</a>
+                    <a href="{{route('products.edit', $product->id)}}">Edit</a>
+                </td>
             </tr>
             @empty
                 <div>
