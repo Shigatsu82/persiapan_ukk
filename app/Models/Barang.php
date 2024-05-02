@@ -14,7 +14,7 @@ class Barang extends Model
         'seri',
         'spesifikasi',
         'stok',
-        'kateori_id',
+        'kategori_id',
     ];
     public function kategori(){
         return $this->belongsTo(Kategori::class);
