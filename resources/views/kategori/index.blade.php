@@ -9,7 +9,7 @@
 <body>
     <h1>Ini Header</h1>
     <table>
-
+        
         <thead>
             <tr>
                 <th>Nomor</th>

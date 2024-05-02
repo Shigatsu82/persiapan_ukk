@@ -52,12 +52,26 @@ class ProductController extends Controller
         return view('products.show', compact('products'));
     }
 
+    public function edit(string $id) : View
+    {
+        $products = Barang::findOrFail($id);
+        return view('products.edit',  compact('products'));
+    }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $updateTarget = Barang::findOrFail($id);
+        $request->validate([
+            'merk' => 'required',
+            'seri' => 'required',
+            'spesifikasi' => 'required',
+            'stok' => 'required',
+            'kategori_id' => 'required',
+        ]);
+        $updateTarget->update($request->all());
+        return redirect()->route('products.index')->with(['success'=>'Data updated successfuly']);
     }
 
     /**
@@ -65,6 +79,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleteTarget = Barang::findOrFail($id);
+        $deleteTarget->delete();
+        return redirect()->route('products.index')->with(['success'=>'Product deleted successfully']);
     }
 }
